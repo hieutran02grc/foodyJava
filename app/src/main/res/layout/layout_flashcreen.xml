@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#cd2027"
+    tools:context=".View.FlashScreenActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="264dp"
+        android:layout_height="104dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="345dp"
+        android:src="@drawable/foody" />
+
+    <TextView
+        android:id="@+id/txtVersion"
+        android:layout_width="70dp"
+        android:layout_height="43dp"
+        android:layout_alignEnd="@+id/imageView"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_marginEnd="47dp"
+        android:layout_marginBottom="-43dp"
+        android:text="TextView"
+        android:textColor="#FFFFFF" />
+
+    <TextView
+        android:id="@+id/txtCompany"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="107dp"
+        android:layout_marginBottom="-332dp"
+        android:text="@string/Company"
+        android:textColor="#FAFAFA" />
+
+    <LinearLayout
+        android:layout_width="132dp"
+        android:layout_height="31dp"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="156dp"
+        android:layout_marginEnd="122dp"
+        android:layout_marginBottom="-314dp">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="44dp"
+            android:layout_height="25dp"
+            android:indeterminateTint="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/txtLoading"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:text="@string/loading"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</RelativeLayout>
