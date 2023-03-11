@@ -6,6 +6,8 @@ android {
     namespace 'com.example.foodypj'
     compileSdk 33
 
+
+
     defaultConfig {
         applicationId "com.example.foodypj"
         minSdk 21
