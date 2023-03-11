@@ -3,4 +3,8 @@
     <string name="version">Version</string>
     <string name="loading">Loading...</string>
     <string name="Company">Hieux2Hoang.java</string>
+    <string name="email">Email</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="dangnhap">Đăng Nhập</string>
+    <string name="hoac">Hoặc</string>
 </resources>
