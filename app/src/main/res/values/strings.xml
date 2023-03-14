@@ -7,4 +7,6 @@
     <string name="matkhau">Mật khẩu</string>
     <string name="dangnhap">Đăng Nhập</string>
     <string name="hoac">Hoặc</string>
+    <string name="dangnhapgoogle">Đăng nhập bằng google</string>
+    <string name="dangnhapfacebook">Đăng nhập bằng facebook</string>
 </resources>

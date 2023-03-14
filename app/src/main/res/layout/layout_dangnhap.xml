@@ -103,6 +103,28 @@
                     android:background="@color/white" />
 
             </LinearLayout>
+
+            <Button
+                android:layout_width="235dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/white"
+                android:text="@string/dangnhapgoogle"
+                android:textAllCaps="false"
+                android:textColor="@color/white" />
+
+            <com.facebook.login.widget.LoginButton
+                android:layout_width="234dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/dangnhapfacebook"
+                app:com_facebook_login_text="@string/dangnhapfacebook"></com.facebook.login.widget.LoginButton>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
