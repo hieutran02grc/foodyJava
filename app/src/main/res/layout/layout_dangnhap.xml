@@ -62,8 +62,8 @@
                 android:textColorHint="@color/white" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="250dp"
+                android:id="@+id/btnDangNhap"
+                android:layout_width="221dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/radius_button"
@@ -105,7 +105,8 @@
             </LinearLayout>
 
             <Button
-                android:layout_width="235dp"
+                android:id="@+id/btnDangNhapGoogle"
+                android:layout_width="305dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="10dp"
@@ -116,7 +117,8 @@
                 android:textColor="@color/white" />
 
             <com.facebook.login.widget.LoginButton
-                android:layout_width="234dp"
+                android:id="@+id/btnDangNhapFacebook"
+                android:layout_width="307dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginTop="5dp"
