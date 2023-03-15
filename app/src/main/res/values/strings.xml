@@ -9,4 +9,6 @@
     <string name="hoac">Hoặc</string>
     <string name="dangnhapgoogle">Đăng nhập bằng google</string>
     <string name="dangnhapfacebook">Đăng nhập bằng facebook</string>
+    <string name="title_activity_trang_chu_acivity">TrangChuAcivity</string>
+
 </resources>
