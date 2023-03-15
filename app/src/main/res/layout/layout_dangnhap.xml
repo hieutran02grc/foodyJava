@@ -62,8 +62,8 @@
                 android:textColorHint="@color/white" />
 
             <Button
-                android:id="@+id/button"
-                android:layout_width="250dp"
+                android:id="@+id/btnDangNhap"
+                android:layout_width="221dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/radius_button"
@@ -103,6 +103,30 @@
                     android:background="@color/white" />
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/btnDangNhapGoogle"
+                android:layout_width="305dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="@color/white"
+                android:text="@string/dangnhapgoogle"
+                android:textAllCaps="false"
+                android:textColor="#757575" />
+
+            <com.facebook.login.widget.LoginButton
+                android:id="@+id/btnDangNhapFacebook"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:paddingTop="15dp"
+                android:paddingBottom="15dp"
+                android:text="@string/dangnhapfacebook"
+                app:com_facebook_login_text="@string/dangnhapfacebook"></com.facebook.login.widget.LoginButton>
         </LinearLayout>
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
