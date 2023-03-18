@@ -1,4 +1,4 @@
-package com.example.foodypj.View;
+package com.example.foodypj.src.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 

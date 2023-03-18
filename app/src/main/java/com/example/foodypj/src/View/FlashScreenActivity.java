@@ -1,4 +1,4 @@
-package com.example.foodypj.View;
+package com.example.foodypj.src.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,6 @@ import android.os.Handler;
 import android.widget.TextView;
 
 import com.example.foodypj.R;
-
-import org.w3c.dom.Text;
 
 public class FlashScreenActivity extends AppCompatActivity {
 
@@ -33,6 +31,7 @@ public class FlashScreenActivity extends AppCompatActivity {
                 public void run() {
                     Intent iDangNhap = new Intent(FlashScreenActivity.this, DangNhapActivity.class);
                     startActivity(iDangNhap);
+                    finish();
                 }
             },2000);
         } catch (PackageManager.NameNotFoundException e) {

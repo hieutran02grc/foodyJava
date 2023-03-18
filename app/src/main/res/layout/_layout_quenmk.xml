@@ -30,25 +30,11 @@
                 android:id="@+id/imageView2"
                 android:layout_width="200dp"
                 android:layout_height="100dp"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="200dp"
                 app:srcCompat="@drawable/foody" />
 
             <EditText
-                android:id="@+id/edEmailDN"
-                android:layout_width="306dp"
-                android:layout_height="66dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/user"
-                android:drawablePadding="10dp"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName"
-                android:textColor="@color/white"
-                android:textColorHint="@color/white" />
-
-            <EditText
-                android:id="@+id/edPasswordDN"
+                android:id="@+id/edResetEmail"
                 android:layout_width="306dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="10dp"
@@ -56,19 +42,19 @@
                 android:drawableLeft="@drawable/padlock"
                 android:drawablePadding="10dp"
                 android:ems="10"
-                android:hint="@string/matkhau"
-                android:inputType="textPersonName|textPassword"
+                android:hint="Nhap email"
+                android:inputType="textPassword"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
 
             <Button
-                android:id="@+id/btnDangKy"
+                android:id="@+id/btnResetEmail"
                 android:layout_width="221dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/radius_button"
                 android:backgroundTint="@color/white"
-                android:text="@string/dangnhap"
+                android:text="Reset password"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textColorHint="@color/white" />
@@ -104,50 +90,19 @@
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnDangNhapGoogle"
-                android:layout_width="305dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="5dp"
-                android:background="@color/white"
-                android:text="@string/dangnhapgoogle"
-                android:textAllCaps="false"
-                android:textColor="#757575" />
-
-            <com.facebook.login.widget.LoginButton
-                android:id="@+id/btnDangNhapFacebook"
-                android:layout_width="307dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginRight="5dp"
-                android:paddingTop="15dp"
-                android:paddingBottom="15dp"
-                android:text="@string/dangnhapfacebook"
-                app:com_facebook_login_text="@string/dangnhapfacebook"></com.facebook.login.widget.LoginButton>
-
             <LinearLayout
                 android:layout_width="306dp"
-                android:layout_height="39dp"
+                android:layout_height="35dp"
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/txtQuenMK"
-                    android:layout_width="155dp"
+                    android:id="@+id/txtDangNhap"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:text="@string/quenmatkhau"
-                    android:textColor="#FDFDFD" />
-
-                <TextView
-                    android:id="@+id/txtDangKyMoi"
-                    android:layout_width="161dp"
-                    android:layout_height="match_parent"
-                    android:text="@string/dangkymoi"
+                    android:text="@string/dangnhap"
                     android:textAlignment="textEnd"
                     android:textColor="@color/white" />
+
             </LinearLayout>
 
         </LinearLayout>

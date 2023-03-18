@@ -10,5 +10,8 @@
     <string name="dangnhapgoogle">Đăng nhập bằng google</string>
     <string name="dangnhapfacebook">Đăng nhập bằng facebook</string>
     <string name="title_activity_trang_chu_acivity">TrangChuAcivity</string>
-
+    <string name="quenmatkhau">Quên mật khẩu</string>
+    <string name="dangkymoi">Đăng ký mới</string>
+    <string name="nhaplaimatkhau">Nhập lại mật khẩu</string>
+    <string name="dangky">Đăng ký</string>
 </resources>

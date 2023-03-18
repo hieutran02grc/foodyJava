@@ -13,27 +13,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FoodyPJ"
-        tools:targetApi="31"
-        android:usesCleartextTraffic="true">
-
+        android:usesCleartextTraffic="true"
+        tools:targetApi="31">
         <activity
-            android:name=".TrangChuActivity"
+            android:name=".src.View.QuenMkActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".TrangChuAcivity"
-            android:exported="false"
-            android:label="@string/title_activity_trang_chu_acivity"
-            android:theme="@style/Theme.FoodyPJ.NoActionBar">
+            android:name=".src.View.DangKyActivity"
+            android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.FlashScreenActivity"
+            android:name=".src.View.TrangChuActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".src.View.FlashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +50,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".View.DangNhapActivity"
+            android:name=".src.View.DangNhapActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

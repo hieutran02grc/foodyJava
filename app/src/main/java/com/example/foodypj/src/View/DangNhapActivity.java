@@ -1,32 +1,25 @@
-package com.example.foodypj.View;
+package com.example.foodypj.src.View;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.foodypj.R;
 import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.GoogleApi;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,13 +34,16 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     Button btnDangNhapGoole;
     Button btnDangNhap;
     EditText edEmail,edPassword;
+    Context context;
     GoogleApiClient apiClient;
+    TextView txtDangKyMoi, txtQuenMK;
     public static int REQUESTCODE_DANGNHAP_GOOGLE =99;
     public static int KIEMTRA_PROVIDER_DANGNHAP =0 ;
 
     private boolean isGuest = false;
     private GoogleSignInClient mClient;
     FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,13 +51,19 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         setContentView(R.layout.layout_dangnhap);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth.signOut();
 
         btnDangNhapGoole = (Button) findViewById(R.id.btnDangNhapGoogle);
-        btnDangNhap = findViewById(R.id.btnDangNhap);
+        btnDangNhap = findViewById(R.id.btnDangKy);
         edEmail = findViewById(R.id.edEmailDN);
         edPassword = findViewById(R.id.edPasswordDN);
-        btnDangNhap.setOnClickListener(this);
+        txtDangKyMoi = findViewById(R.id.txtDangKyMoi);
+        txtQuenMK = findViewById(R.id.txtQuenMK);
+
         btnDangNhapGoole.setOnClickListener(this);
+        btnDangNhap.setOnClickListener(this);
+        txtDangKyMoi.setOnClickListener(this);
+        txtQuenMK.setOnClickListener(this);
 
 /*        createRequest();*/
         TaoClientDangNhapGoogle();
@@ -182,16 +184,35 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             case R.id.btnDangNhapGoogle:
                 DangNhapGoogle(apiClient);
                 break;
-            case R.id.btnDangNhap:
+            case R.id.btnDangKy:
                 DangNhap();
                 break;
+            case R.id.txtDangKyMoi:
+                Intent iDangKy = new Intent(this,DangKyActivity.class);
+                startActivity(iDangKy);
+            case R.id.txtQuenMK:
+                Intent iQuenmk = new Intent(this,QuenMkActivity.class);
+                startActivity(iQuenmk);
         }
     }
 
     private void DangNhap(){
-        String email = edEmail.toString();
-        String password = edPassword.toString();
-        firebaseAuth.signInWithEmailAndPassword(email,password);
+        String email = edEmail.getText().toString();
+        String password = edPassword.getText().toString();
+        firebaseAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(
+                new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(DangNhapActivity.this,TrangChuActivity.class);
+                            context.startActivity(intent);
+                        }else {
+                            Toast.makeText(getApplicationContext(), "Login Fail", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+        );
     }
 
     @Override
