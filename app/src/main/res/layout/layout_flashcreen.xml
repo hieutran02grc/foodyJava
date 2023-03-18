@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#cd2027"
-    tools:context=".View.FlashScreenActivity">
+    tools:context=".src.View.FlashScreenActivity">
 
     <ImageView
         android:id="@+id/imageView"
