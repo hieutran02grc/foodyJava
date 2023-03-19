@@ -16,4 +16,7 @@
     <string name="dangky">Đăng ký</string>
     <string name="places">Places</string>
     <string name="food">Food</string>
+    <string name="tabmoinhat">Mới nhất</string>
+    <string name="tabdanhmuc">Danh mục</string>
+    <string name="tabkhuvuc">Khu vực</string>
 </resources>
