@@ -19,4 +19,10 @@
     <string name="tabmoinhat">Mới nhất</string>
     <string name="tabdanhmuc">Danh mục</string>
     <string name="tabkhuvuc">Khu vực</string>
+    <string name="ganday">Gần Đây</string>
+    <string name="blogs">Blogs</string>
+    <string name="giaohang">Giao hàng</string>
+    <string name="gameandfun">Game and fun</string>
+    <string name="danhgia">Đánh giá</string>
+    <string name="topthanhvien">Top thành viên</string>
 </resources>
