@@ -20,9 +20,9 @@ public class QuanAnModel {
     List<String> tienich ;
     long luotthich;
 
-    DatabaseReference dataQuanAn;
+
     public QuanAnModel(){
-        dataQuanAn = FirebaseDatabase.getInstance().getReference().child("quanans");
+
     }
 
     public long getLuotthich() {
@@ -89,25 +89,5 @@ public class QuanAnModel {
         return tienich;
     }
 
-    List<QuanAnModel> quanAnModelList;
-    public List<QuanAnModel> getDanhSachQuanAn(){
-        quanAnModelList = new ArrayList<>();
-        ValueEventListener valueEventListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataValue: snapshot.getChildren()){
-                    QuanAnModel quanAnModel = dataValue.getValue(QuanAnModel.class);
-                    Log.d("kitrm tra", quanAnModel.getTenquanan() + "");
-                    quanAnModelList.add(quanAnModel);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        };
-        dataQuanAn.addListenerForSingleValueEvent(valueEventListener);
-        return  quanAnModelList;
-    }
 }

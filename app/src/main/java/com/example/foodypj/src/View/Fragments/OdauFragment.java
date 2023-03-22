@@ -21,10 +21,4 @@ public class OdauFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        quanAnModel = new QuanAnModel();
-        quanAnModel.getDanhSachQuanAn();
-    }
 }
