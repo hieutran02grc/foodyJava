@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -17,19 +19,20 @@
             <TextView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@drawable/background_cycle"
                 android:gravity="center"
                 android:text="6.8"
-                android:background="@drawable/background_cycle"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent" />
 
             <LinearLayout
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTenQuanAnOdau"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogi house"
@@ -53,12 +56,14 @@
         </LinearLayout>
 
         <ImageView
+            android:id="@+id/imgHinhQuanAnOdau"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/download"
-            android:scaleType="centerCrop"/>
+            android:scaleType="fitXY"
+            android:src="@drawable/download" />
 
         <Button
+            android:id="@+id/btnDatMonOdau"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -67,9 +72,11 @@
             android:drawableTop="@drawable/shipping"
             android:padding="5dp"
             android:text="@string/dathang"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:visibility="gone" />
 
         <LinearLayout
+            android:id="@+id/containerBinhLuan1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -78,21 +85,23 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cicleImgUser"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@drawable/background_cycle"
                 android:gravity="center"
                 android:text="6.8"
-                android:background="@drawable/background_cycle"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent" />
 
             <LinearLayout
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTieuDeBinhLuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogi house"
@@ -100,6 +109,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtNoiDungBinhLuan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="56 Van Hoi" />
@@ -107,13 +117,16 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtChamdiem"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:text="5.5" />
 
 
         </LinearLayout>
+
         <LinearLayout
+            android:id="@+id/containerBinhLuan2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -122,21 +135,23 @@
 
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cicleImgUser2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:background="@drawable/background_cycle"
                 android:gravity="center"
                 android:text="6.8"
-                android:background="@drawable/background_cycle"
-                android:textColor="@color/colorAccent"/>
+                android:textColor="@color/colorAccent" />
 
             <LinearLayout
                 android:layout_width="119dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txtTieuDeBinhLuan2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Gogi house"
@@ -144,6 +159,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/txtNoiDungBinhLuan2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="56 Van Hoi" />
@@ -151,6 +167,7 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/txtChamdiem2"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:text="7.0" />
@@ -164,23 +181,26 @@
             android:layout_marginLeft="50dp">
 
             <TextView
+                android:id="@+id/txtTongBinhLuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="52"
+                android:layout_margin="5dp"
                 android:drawableLeft="@drawable/comment1"
                 android:drawablePadding="10dp"
-                android:textAlignment="center"
-                android:layout_margin="5dp"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:text="0"
+                android:textAlignment="center" />
+
             <TextView
+                android:id="@+id/txtTongHinhAnhBinhLuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="100"
+                android:layout_margin="5dp"
                 android:drawableLeft="@drawable/gallery"
                 android:drawablePadding="5dp"
-                android:textAlignment="center"
-                android:layout_margin="5dp"
-                android:padding="5dp"/>
+                android:padding="5dp"
+                android:text="0"
+                android:textAlignment="center" />
 
         </LinearLayout>
 

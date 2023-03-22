@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.example.foodypj.Controller.DangKyController;
+import com.example.foodypj.Model.ThanhVienModel;
 import com.example.foodypj.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -26,6 +28,7 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
     EditText edNhapLaiPW;
     Button btnDangKy;
     TextView txtdangnhap;
+    DangKyController dangKyController;
 
     FirebaseAuth firebaseAuth;
     ProgressDialog progressDialog;
@@ -88,6 +91,12 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
                         progressDialog.dismiss();
+                        ThanhVienModel thanhVienModel = new ThanhVienModel();
+                        thanhVienModel.setHoten(email);
+                        thanhVienModel.setHinhanh("user.jpg");
+                        String uid = task.getResult().getUser().getUid();
+                        dangKyController =new DangKyController();
+                        dangKyController.ThemThongTinThanhVienController(thanhVienModel, uid);
                         Toast.makeText(DangKyActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
                     }else{
                         progressDialog.dismiss();
