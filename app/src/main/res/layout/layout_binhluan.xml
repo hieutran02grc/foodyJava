@@ -4,10 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <Toolbar
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/red_2027">
+        
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Viết bình luận"
+            android:textSize="15dp"
+            android:textColor="@color/colorAccent"/>
+        
         <TextView
             android:id="@+id/txtDangBinhLuan"
             android:layout_width="wrap_content"
@@ -18,7 +28,8 @@
             android:textColor="@color/colorAccent"
             android:padding="5dp"
             />
-    </Toolbar>
+    </androidx.appcompat.widget.Toolbar>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,15 +63,23 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="522dp"
+        android:layout_height="330dp"
         android:layout_gravity="top"
         android:hint="Viet tren 100 tu dung chinh ta, ngon tu van hoa, khong spm..."
         android:textSize="12sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/my_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="195dp"
+        android:orientation="vertical"
+        android:scrollbars="vertical" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorBackgroundTrangChu">
         <ImageButton
+            android:id="@+id/btnChonHinhAnh"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@drawable/add_a_photo"
