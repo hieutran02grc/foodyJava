@@ -81,16 +81,8 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
         if(quanAnModel.isGiaohang() == true){
             holder.btnDatMonOdau.setVisibility(View.VISIBLE);
         }
-        if(quanAnModel.getHinhquanan().size() > 0){
-            StorageReference storageReferenceHinhAnh  = FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhquanan().get(0));
-            long ONE_MEGABYTE = 1024 * 1024;
-            storageReferenceHinhAnh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
-                    holder.imgHinhQuanAnOdau.setImageBitmap(bitmap);
-                }
-            });
+        if(quanAnModel.getBitmapList().size() > 0){
+            holder.imgHinhQuanAnOdau.setImageBitmap(quanAnModel.getBitmapList().get(0));
         }
 
         if(quanAnModel.getBinhLuanModelList().size() > 0 ){

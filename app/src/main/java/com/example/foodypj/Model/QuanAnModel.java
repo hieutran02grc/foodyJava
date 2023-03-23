@@ -1,5 +1,6 @@
 package com.example.foodypj.Model;
 
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.util.Log;
 
@@ -22,7 +23,15 @@ public class QuanAnModel {
     List<String> tienich;
     List<String> hinhquanan ;
     List<BinhLuanModel> binhLuanModelList;
+    List<Bitmap> bitmapList;
 
+    public List<Bitmap> getBitmapList() {
+        return bitmapList;
+    }
+
+    public void setBitmapList(List<Bitmap> bitmapList) {
+        this.bitmapList = bitmapList;
+    }
 
     long luotthich;
     DatabaseReference rootNode ;
@@ -148,7 +157,7 @@ public class QuanAnModel {
             if(i == itemTiepTheo){
                 break;
             }
-            if(i <itemDaCo){
+            if(i < itemDaCo){
                 i++;
                 continue;
             }
