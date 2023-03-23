@@ -2,6 +2,8 @@ package com.example.foodypj.Controller;
 
 import android.content.Context;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +25,7 @@ public class OdauController {
         quanAnModel = new QuanAnModel();
     }
 
-    public void getDanhSachQuanAnController(RecyclerView recyclerOdau){
+    public void getDanhSachQuanAnController(RecyclerView recyclerOdau, ProgressBar progressBar){
         final List<QuanAnModel> quanAnModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerOdau.setLayoutManager(layoutManager);
@@ -35,6 +37,7 @@ public class OdauController {
                 Log.d("kiemtra", quanAnModel.getHinhquanan()+"");
                 quanAnModelList.add(quanAnModel);
                 adapterRecycleOdau.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
         };
         quanAnModel.getDanhSachQuanAn(odauInterface);

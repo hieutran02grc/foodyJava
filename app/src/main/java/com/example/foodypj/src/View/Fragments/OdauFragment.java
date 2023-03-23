@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,12 +18,13 @@ import com.example.foodypj.R;
 public class OdauFragment extends Fragment {
     OdauController odauController;
     RecyclerView recyclerOdau;
+    ProgressBar progressBar;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_fragment_odau,container,false);
         recyclerOdau = (RecyclerView) view.findViewById(R.id.recycleOdau);
-
+        progressBar = view.findViewById(R.id.progress_barOdau);
 
         return view;
     }
@@ -31,6 +33,6 @@ public class OdauFragment extends Fragment {
     public void onStart() {
         super.onStart();
         odauController = new OdauController(getContext());
-        odauController.getDanhSachQuanAnController(recyclerOdau);
+        odauController.getDanhSachQuanAnController(recyclerOdau, progressBar);
     }
 }
