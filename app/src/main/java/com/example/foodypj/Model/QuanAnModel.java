@@ -2,6 +2,8 @@ package com.example.foodypj.Model;
 
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -16,7 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QuanAnModel {
+public class QuanAnModel implements Parcelable {
     boolean giaohang;
     String giodongcua;
     String giomocua,tenquanan,videogioithieu,maquanan;
@@ -24,6 +26,31 @@ public class QuanAnModel {
     List<String> hinhquanan ;
     List<BinhLuanModel> binhLuanModelList;
     List<Bitmap> bitmapList;
+
+    protected QuanAnModel(Parcel in) {
+        giaohang = in.readByte() != 0;
+        giodongcua = in.readString();
+        giomocua = in.readString();
+        tenquanan = in.readString();
+        videogioithieu = in.readString();
+        maquanan = in.readString();
+        tienich = in.createStringArrayList();
+        hinhquanan = in.createStringArrayList();
+        bitmapList = in.createTypedArrayList(Bitmap.CREATOR);
+        luotthich = in.readLong();
+    }
+
+    public static final Creator<QuanAnModel> CREATOR = new Creator<QuanAnModel>() {
+        @Override
+        public QuanAnModel createFromParcel(Parcel in) {
+            return new QuanAnModel(in);
+        }
+
+        @Override
+        public QuanAnModel[] newArray(int size) {
+            return new QuanAnModel[size];
+        }
+    };
 
     public List<Bitmap> getBitmapList() {
         return bitmapList;
@@ -198,4 +225,21 @@ public class QuanAnModel {
         }
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeByte((byte) (giaohang ? 1 : 0));
+        dest.writeString(giodongcua);
+        dest.writeString(giomocua);
+        dest.writeString(tenquanan);
+        dest.writeString(videogioithieu);
+        dest.writeString(maquanan);
+        dest.writeStringList(tienich);
+        dest.writeStringList(hinhquanan);
+        dest.writeLong(luotthich);
+    }
 }

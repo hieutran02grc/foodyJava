@@ -34,11 +34,11 @@ public class OdauController {
         quanAnModel = new QuanAnModel();
     }
 
-    public void getDanhSachQuanAnController(NestedScrollView nestedScrollView,RecyclerView recyclerOdau, ProgressBar progressBar){
+    public void getDanhSachQuanAnController(Context context,NestedScrollView nestedScrollView,RecyclerView recyclerOdau, ProgressBar progressBar){
         final List<QuanAnModel> quanAnModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerOdau.setLayoutManager(layoutManager);
-        adapterRecycleOdau = new AdapterRecycleOdau(quanAnModelList, R.layout.custom_layout_recyclerview_odau);
+        adapterRecycleOdau = new AdapterRecycleOdau(context,quanAnModelList, R.layout.custom_layout_recyclerview_odau);
         recyclerOdau.setAdapter(adapterRecycleOdau);
         progressBar.setVisibility(View.VISIBLE);
         final OdauInterface odauInterface = new OdauInterface() {
