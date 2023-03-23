@@ -10,6 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red_2027">#cd2027</color>
     <color name="colorBackgroundTrangChu">#CCC</color>
+    <color name="colorPrimaryDark">#B2B2B2</color>
 
 <!--    <color name="colorAccent">#FFFFF</color>-->
 </resources>
