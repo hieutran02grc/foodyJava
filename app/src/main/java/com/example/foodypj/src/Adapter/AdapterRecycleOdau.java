@@ -37,7 +37,8 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
     public class ViewHolder extends  RecyclerView.ViewHolder{
         TextView txtTenQuanAnOdau, txtTieuDeBinhLuan2,
                 txtTieuDeBinhLuan, txtNoiDungBinhLuan, txtNoiDungBinhLuan2,
-                txtChamDiemBinhLuan, txtChamDiemBinhLuan2, txtTongBinhLuan, txtTongHinhAnhBinhLuan;
+                txtChamDiemBinhLuan, txtChamDiemBinhLuan2, txtTongBinhLuan,
+                txtTongHinhAnhBinhLuan, txtDiemTrungBinhQuanAN;
         CircleImageView cicleImgUser, cicleImgUser2;
         Button btnDatMonOdau;
         ImageView imgHinhQuanAnOdau;
@@ -60,6 +61,7 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
             txtChamDiemBinhLuan2 = itemView.findViewById(R.id.txtChamdiem2);
             txtTongBinhLuan = itemView.findViewById(R.id.txtTongBinhLuan);
             txtTongHinhAnhBinhLuan = itemView.findViewById(R.id.txtTongHinhAnhBinhLuan);
+            txtDiemTrungBinhQuanAN = itemView.findViewById(R.id.txtDiemTrungBinh);
         }
     }
 
@@ -107,9 +109,14 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
             holder.txtTongBinhLuan.setText(quanAnModel.getBinhLuanModelList().size() + "");
 
             int tongSoBinhLuan = 0;
+            double tongdiem = 0;
             for(BinhLuanModel binhLuanModel1 : quanAnModel.getBinhLuanModelList()){
                 tongSoBinhLuan += binhLuanModel1.getHinhAnhList().size();
+                tongdiem += binhLuanModel1.getChamdiem();
             }
+
+            double diemtrungbinh  = tongdiem/quanAnModel.getBinhLuanModelList().size();
+            holder.txtDiemTrungBinhQuanAN.setText(String.format("%.1f",diemtrungbinh)+"");
             if(tongSoBinhLuan >0){
                 holder.txtTongHinhAnhBinhLuan.setText(tongSoBinhLuan + "");
             }
