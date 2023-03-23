@@ -23,14 +23,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorBackgroundTrangChu">
+        android:background="@color/colorBackgroundTrangChu"
+        android:orientation="vertical">
         <TextView
+            android:id="@+id/txtTenQuanAn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gogi house"
             android:textSize="15dp"
             android:textStyle="bold"/>
         <TextView
+            android:id="@+id/txtDiaChiQuanAn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="323 tran hung dao"/>
@@ -49,7 +52,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="544dp"
+        android:layout_height="522dp"
         android:layout_gravity="top"
         android:hint="Viet tren 100 tu dung chinh ta, ngon tu van hoa, khong spm..."
         android:textSize="12sp" />
