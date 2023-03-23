@@ -164,6 +164,7 @@
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleAngi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"/>
 

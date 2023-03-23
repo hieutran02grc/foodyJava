@@ -3,17 +3,20 @@ package com.example.foodypj.src.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.RadioButton;
 
 import com.example.foodypj.R;
 import com.example.foodypj.src.Adapter.AdapterViewPagerTrangChu;
 
-public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener {
+public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
 
     ViewPager viewPagerTrangChu;
     RadioButton rdOdau, rdAngi;
+    AdapterViewPagerTrangChu adapterViewPagerTrangChu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +27,10 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
         rdOdau = findViewById(R.id.select_places);
         rdAngi = findViewById(R.id.select_food);
 
-        AdapterViewPagerTrangChu adapterViewPagerTrangChu = new AdapterViewPagerTrangChu(getSupportFragmentManager());
+        rdOdau.setOnClickListener(this);
+        rdAngi.setOnClickListener(this);
+
+        adapterViewPagerTrangChu = new AdapterViewPagerTrangChu(getSupportFragmentManager());
         viewPagerTrangChu.setAdapter(adapterViewPagerTrangChu);
         viewPagerTrangChu.addOnPageChangeListener(this);
     }
@@ -46,8 +52,14 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
        }
     }
 
+
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+
+    @Override
+    public void onClick(View v) {
 
     }
 }

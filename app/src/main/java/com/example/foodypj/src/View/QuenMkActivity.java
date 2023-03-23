@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -63,7 +64,9 @@ public class QuenMkActivity extends AppCompatActivity implements View.OnClickLis
                     });
                 }
                 break;
-
+            case R.id.txtDangNhap:
+                Intent iDangNhap = new Intent(this,DangNhapActivity.class);
+                startActivity(iDangNhap);
         }
     }
 
