@@ -76,7 +76,9 @@
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/viewpager_trangchu"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            android:backgroundTint="@color/colorAccent">
 
         </androidx.viewpager.widget.ViewPager>
 

@@ -1,10 +1,13 @@
 package com.example.foodypj.Controller;
 
 import android.content.Context;
+import android.location.Location;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,7 +28,7 @@ public class OdauController {
         quanAnModel = new QuanAnModel();
     }
 
-    public void getDanhSachQuanAnController(RecyclerView recyclerOdau, ProgressBar progressBar){
+    public void getDanhSachQuanAnController(NestedScrollView nestedScrollView,RecyclerView recyclerOdau, ProgressBar progressBar){
         final List<QuanAnModel> quanAnModelList = new ArrayList<>();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
         recyclerOdau.setLayoutManager(layoutManager);
@@ -40,6 +43,13 @@ public class OdauController {
                 progressBar.setVisibility(View.GONE);
             }
         };
-        quanAnModel.getDanhSachQuanAn(odauInterface);
+
+        nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(@NonNull NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+
+            }
+        });
+        quanAnModel.getDanhSachQuanAn(odauInterface,3,0);
     }
 }
