@@ -35,6 +35,6 @@ public class OdauFragment extends Fragment {
     public void onStart() {
         super.onStart();
         odauController = new OdauController(getContext());
-        odauController.getDanhSachQuanAnController(nestedScrollView,recyclerOdau, progressBar);
+        odauController.getDanhSachQuanAnController(getContext(),nestedScrollView,recyclerOdau, progressBar);
     }
 }

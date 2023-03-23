@@ -1,5 +1,7 @@
 package com.example.foodypj.src.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -17,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.foodypj.Model.BinhLuanModel;
 import com.example.foodypj.Model.QuanAnModel;
 import com.example.foodypj.R;
+import com.example.foodypj.src.View.ChiTietQuanAnActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -29,9 +32,11 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
 
     List<QuanAnModel> quanAnModelList;
     int resource;
-    public AdapterRecycleOdau(List<QuanAnModel> quanAnModelList, int resource){
+    Context context;
+    public AdapterRecycleOdau(Context context,List<QuanAnModel> quanAnModelList, int resource){
         this.quanAnModelList = quanAnModelList;
         this.resource = resource;
+        this.context = context;
     }
 
     public class ViewHolder extends  RecyclerView.ViewHolder{
@@ -124,6 +129,15 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
             holder.containerBinhLuan.setVisibility(View.GONE);
             holder.containerBinhLuan2.setVisibility(View.GONE);
         }
+
+        holder.txtTenQuanAnOdau.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent iChitietquanan = new Intent(context, ChiTietQuanAnActivity.class);
+                iChitietquanan.putExtra("quanan", quanAnModel);
+                context.startActivity(iChitietquanan);
+            }
+        });
     }
 
     private void setHinhAnhBinhLuan(final CircleImageView circleImageView, String linkhinh){
