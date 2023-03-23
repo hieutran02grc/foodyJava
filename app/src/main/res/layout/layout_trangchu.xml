@@ -20,7 +20,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
@@ -37,19 +37,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:background="@drawable/custombackground_radiobtngroup_tt">
+                android:background="@drawable/custombackground_radiobtngroup_tt"
+                android:orientation="horizontal">
 
                 <RadioButton
                     android:id="@+id/select_places"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="@string/places"
-                    android:button="@android:color/transparent"
                     android:background="@drawable/customradio_places"
-                    android:padding="10dp"
+                    android:button="@android:color/transparent"
                     android:checked="true"
-                    android:textColor="@drawable/textchange_radio_tt"/>
+                    android:padding="10dp"
+                    android:text="@string/places"
+                    android:textColor="@drawable/textchange_radio_tt" />
 
                 <RadioButton
                     android:id="@+id/select_food"
@@ -60,7 +60,7 @@
                     android:padding="10dp"
                     android:paddingRight="10dp"
                     android:text="@string/food"
-                    android:textColor="@drawable/textchange_radio_tt"/>
+                    android:textColor="@drawable/textchange_radio_tt" />
 
             </RadioGroup>
 
