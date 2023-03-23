@@ -164,6 +164,7 @@ public class QuanAnModel {
             i++;
             QuanAnModel quanAnModel = valueQuanAn.getValue(QuanAnModel.class);
             quanAnModel.setMaquanan(valueQuanAn.getKey());
+            Log.d("kiem tra",quanAnModel.getTenquanan()+"");
 
             //Lay danh sach hinh anh cua quan an theo ma;
             DataSnapshot dataSnapshotHinhQuanAn = snapshot.child("hinhanhquanans").child(valueQuanAn.getKey());

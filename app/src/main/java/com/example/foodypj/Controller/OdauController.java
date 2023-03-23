@@ -44,11 +44,10 @@ public class OdauController {
         final OdauInterface odauInterface = new OdauInterface() {
             @Override
             public void getDanhSachQuanAnModel(QuanAnModel quanAnModel) {
-
-               /* quanAnModelList.add(quanAnModel);
+/*
+                quanAnModelList.add(quanAnModel);
                 adapterRecycleOdau.notifyDataSetChanged();
-                progressBar.setVisibility(View.GONE);
-*/
+                progressBar.setVisibility(View.GONE);*/
                 final List<Bitmap> bitmaps = new ArrayList<>();
                 for(String linkhinh : quanAnModel.getHinhquanan()){
                     StorageReference storageReferenceHinhAnh  = FirebaseStorage.getInstance().getReference().child("hinhanh").child(linkhinh);
@@ -77,7 +76,7 @@ public class OdauController {
             public void onScrollChange(@NonNull NestedScrollView v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if(v.getChildAt(v.getChildCount()-1 )!= null){
                     if(scrollY >= (v.getChildAt(v.getChildCount()-1)).getMeasuredHeight()-v.getMeasuredHeight()){
-                        itemDaCo += 2;
+                        itemDaCo += 3;
                         quanAnModel.getDanhSachQuanAn(odauInterface,itemDaCo,itemDaCo-3);
                     }
                 }

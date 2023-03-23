@@ -83,6 +83,13 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
         }
         if(quanAnModel.getBitmapList().size() > 0){
             holder.imgHinhQuanAnOdau.setImageBitmap(quanAnModel.getBitmapList().get(0));
+
+            /*StorageReference storageHinhUser = FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhquanan().get(0));
+            long ONE_MEGABYTE = 1024 * 1024;
+            storageHinh User.getBytes(ONE_MEGABYTE).addOnSuccessListener(bytes -> {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                holder.imgHinhQuanAnOdau.setImageBitmap(bitmap);
+            });*/
         }
 
         if(quanAnModel.getBinhLuanModelList().size() > 0 ){
