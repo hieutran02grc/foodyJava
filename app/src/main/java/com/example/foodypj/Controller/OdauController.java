@@ -58,7 +58,6 @@ public class OdauController {
                             Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
                             bitmaps.add(bitmap);
                             quanAnModel.setBitmapList(bitmaps);
-
                             if(quanAnModel.getBitmapList().size()== quanAnModel.getHinhquanan().size()){
                                 quanAnModelList.add(quanAnModel);
                                 adapterRecycleOdau.notifyDataSetChanged();

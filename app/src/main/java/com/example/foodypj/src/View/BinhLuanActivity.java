@@ -54,16 +54,16 @@ public class BinhLuanActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        int id = v.getId();
+/*        int id = v.getId();
         switch (id){
             case R.id.btnChonHinhAnh:
                 Intent iChonHinhBinhLuan = new Intent(this, ChonHinhBinhLuanActivity.class);
                 startActivityForResult(iChonHinhBinhLuan,11);
-                /*
+                *//*
 //                iChonHinhBinhLuan.setType("image/*");
 //                iChonHinhBinhLuan.setAction(Intent.ACTION_GET_CONTENT);
 //                startActivityForResult(Intent.createChooser(iChonHinhBinhLuan, "Select Picture"), PICK_IMAGE_REQUEST);
-//                break;*/
+//                break;*//*
                 List<Bitmap> images = new ArrayList<>();
                 String[] projection = {MediaStore.Images.Media.DATA};
                 Cursor cursor = getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, projection, null, null, null);
@@ -76,7 +76,7 @@ public class BinhLuanActivity extends AppCompatActivity implements View.OnClickL
                     cursor.close();
                 }
 
-        }
+        }*/
     }
 
     @Override

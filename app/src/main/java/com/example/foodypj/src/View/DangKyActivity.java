@@ -49,6 +49,8 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
 
         txtdangnhap.setOnClickListener(this);
         btnDangKy.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -70,7 +72,7 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
-    private void DangKy() {
+    private void DangKy(){
         progressDialog.setMessage("Đang xử lý");
         progressDialog.setIndeterminate(true);
 
@@ -98,6 +100,7 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
                         dangKyController =new DangKyController();
                         dangKyController.ThemThongTinThanhVienController(thanhVienModel, uid);
                         Toast.makeText(DangKyActivity.this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
+
                     }else{
                         progressDialog.dismiss();
                         Toast.makeText(DangKyActivity.this, "Đăng ký không thành công", Toast.LENGTH_SHORT).show();
@@ -105,5 +108,6 @@ public class DangKyActivity extends AppCompatActivity implements View.OnClickLis
                 }
             });
         }
+
     }
 }

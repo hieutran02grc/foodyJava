@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodypj.Model.BinhLuanModel;
@@ -48,6 +49,7 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
         Button btnDatMonOdau;
         ImageView imgHinhQuanAnOdau;
         LinearLayout containerBinhLuan,containerBinhLuan2;
+        CardView cardView;
 
         public  ViewHolder(View itemView){
             super(itemView);
@@ -67,6 +69,7 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
             txtTongBinhLuan = itemView.findViewById(R.id.txtTongBinhLuan);
             txtTongHinhAnhBinhLuan = itemView.findViewById(R.id.txtTongHinhAnhBinhLuan);
             txtDiemTrungBinhQuanAN = itemView.findViewById(R.id.txtDiemTrungBinh);
+            cardView = itemView.findViewById(R.id.cardViewOdau);
         }
     }
 
@@ -109,7 +112,10 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
                 holder.txtNoiDungBinhLuan2.setText(binhLuanModel2.getNoidung());
                 setHinhAnhBinhLuan(holder.cicleImgUser2,binhLuanModel2.getThanhVienModel().getHinhanh());
                 holder.txtChamDiemBinhLuan2.setText(binhLuanModel2.getChamdiem() + "");
+            }else{
+                holder.containerBinhLuan2.setVisibility(View.GONE);
             }
+
             holder.txtTongBinhLuan.setText(quanAnModel.getBinhLuanModelList().size() + "");
 
             int tongSoBinhLuan = 0;
@@ -130,7 +136,7 @@ public class AdapterRecycleOdau extends RecyclerView.Adapter<AdapterRecycleOdau.
             holder.containerBinhLuan2.setVisibility(View.GONE);
         }
 
-        holder.txtTenQuanAnOdau.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent iChitietquanan = new Intent(context, ChiTietQuanAnActivity.class);

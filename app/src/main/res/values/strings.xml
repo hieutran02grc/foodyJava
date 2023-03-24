@@ -26,4 +26,7 @@
     <string name="danhgia">Đánh giá</string>
     <string name="topthanhvien">Top thành viên</string>
     <string name="dathang">Đặt món</string>
+    <string name="dadongcua">Đã đóng cửa</string>
+    <string name="damocua">Đã mở cửa</string>
+
 </resources>

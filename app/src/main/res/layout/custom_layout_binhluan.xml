@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:id="@+id/containerBinhLuan1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cicleImgUser"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_cycle"
+            android:gravity="center"
+            android:text="6.8"
+            android:textColor="@color/colorAccent" />
+
+        <LinearLayout
+            android:layout_width="119dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/txtTieuDeBinhLuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Gogi house"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtNoiDungBinhLuan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="56 Van Hoi" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtChamdiem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:text="5.5" />
+
+
+    </LinearLayout>
+</LinearLayout>

@@ -22,7 +22,7 @@ public class AdapterHienThiBinhLuanDuocChon extends RecyclerView.Adapter<Adapter
 
         public  ViewHolder(View itemView){
             super(itemView);
-            imageView = itemView.findViewById(R.id.item_image_view);
+            /*imageView = itemView.findViewById(R.id.item_image_view);*/
 
         }
     }
@@ -30,9 +30,10 @@ public class AdapterHienThiBinhLuanDuocChon extends RecyclerView.Adapter<Adapter
     @NonNull
     @Override
     public AdapterHienThiBinhLuanDuocChon.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
+/*        View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.custom_layout_chonhinhbinhluan, parent, false);
-        return new ViewHolder(view);
+        return new ViewHolder(view);*/
+        return null;
     }
 
     @Override

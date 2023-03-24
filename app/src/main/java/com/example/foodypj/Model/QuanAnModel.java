@@ -36,8 +36,10 @@ public class QuanAnModel implements Parcelable {
         maquanan = in.readString();
         tienich = in.createStringArrayList();
         hinhquanan = in.createStringArrayList();
-        bitmapList = in.createTypedArrayList(Bitmap.CREATOR);
         luotthich = in.readLong();
+        binhLuanModelList = new ArrayList<BinhLuanModel>();
+        in.readTypedList(binhLuanModelList,BinhLuanModel.CREATOR);
+
     }
 
     public static final Creator<QuanAnModel> CREATOR = new Creator<QuanAnModel>() {
@@ -208,6 +210,7 @@ public class QuanAnModel implements Parcelable {
                 BinhLuanModel binhLuanModel = valueBinhLuan.getValue(BinhLuanModel.class);
                 binhLuanModel.setMabinhluan(valueBinhLuan.getKey());
                 ThanhVienModel thanhVienModel = snapshot.child("thanhviens").child(binhLuanModel.getMauser()).getValue(ThanhVienModel.class);
+                Log.d("Kiem tra ",binhLuanModel.getMauser()+"");
                 binhLuanModel.setThanhVienModel(thanhVienModel);
 
                 List<String> hinhanhBinhLuanList = new ArrayList<>();
@@ -242,5 +245,6 @@ public class QuanAnModel implements Parcelable {
         dest.writeStringList(tienich);
         dest.writeStringList(hinhquanan);
         dest.writeLong(luotthich);
+        dest.writeTypedList(binhLuanModelList);
     }
 }
