@@ -2,11 +2,14 @@ package com.example.foodypj.src.View;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,11 +33,12 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
     TextView txtTenQuanAn, txtDiaChi,txtThoiGianHoatDong,
             txtTrangThaiHoatDong, txtTongSoHinhAnh,
             txtTongSoBinhLuan, txtTongSoLuuLai, txtTongSoCheckIn, txtTieuDeToolBar;
-    ImageView imgHinhQuanAn;
+    ImageView imgHinhQuanAn,imgPlayVideo;
     QuanAnModel quanAnModel;
     Toolbar toolbar;
     RecyclerView recyclerViewBinhLuan;
     AdapterBinhLuan adapterBinhLuan;
+    VideoView videotrailer;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,10 +58,15 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
         toolbar = findViewById(R.id.toolbar);
         recyclerViewBinhLuan = findViewById(R.id.recycleBinhLuanChiTietQuanAn);
+        videotrailer = findViewById(R.id.videoTrailer);
+        imgPlayVideo = findViewById(R.id.imgPlayTrailer);
+
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+
     }
 
     @Override
@@ -110,6 +119,37 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
                 imgHinhQuanAn.setImageBitmap(bitmap);
             }
         });
+
+        if(quanAnModel.getVideogioithieu() != null){
+            videotrailer.setVisibility(View.VISIBLE);
+            imgPlayVideo.setVisibility(View.VISIBLE);
+            imgHinhQuanAn.setVisibility(View.GONE);
+            StorageReference storageVideo = FirebaseStorage.getInstance().getReference().child("videos").child(quanAnModel.getVideogioithieu());
+            storageVideo.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    videotrailer.setVideoURI(uri);
+                    videotrailer.seekTo(1);
+                }
+            });
+
+            imgPlayVideo.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    videotrailer.start();
+                    MediaController mediaController = new MediaController(ChiTietQuanAnActivity.this);
+                    videotrailer.setMediaController(mediaController);
+                    imgPlayVideo.setVisibility(View.GONE);
+                }
+            });
+        }else{
+            imgHinhQuanAn.setVisibility(View.VISIBLE);
+            videotrailer.setVisibility(View.GONE);
+            imgPlayVideo.setVisibility(View.GONE);
+
+        }
+
+
 
         //Load Danh sach binh luan cua quan an
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

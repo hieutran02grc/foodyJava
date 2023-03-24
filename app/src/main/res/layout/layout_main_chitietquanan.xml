@@ -62,13 +62,32 @@
                     android:drawableTop="@drawable/gallery"
                     android:text="Lưu lại"/>
             </LinearLayout>
-            <ImageView
-                android:id="@+id/imgHinhQuanAn"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:src="@drawable/download"
-                android:scaleType="fitXY"
-                />
+                android:layout_height="180dp">
+                <ImageView
+                    android:id="@+id/imgHinhQuanAn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/download"
+                    android:scaleType="fitXY"
+                    />
+                <VideoView
+                    android:id="@+id/videoTrailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"/>
+                <ImageView
+                    android:id="@+id/imgPlayTrailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/play_circle"
+                    android:visibility="gone"
+                    />
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/txtTenQuanAn"
                 android:layout_width="wrap_content"
