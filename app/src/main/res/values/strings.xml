@@ -28,5 +28,7 @@
     <string name="dathang">Đặt món</string>
     <string name="dadongcua">Đã đóng cửa</string>
     <string name="damocua">Đã mở cửa</string>
+    <string name="open">Open Navigation</string>
+    <string name="close">Close Navigation</string>
 
 </resources>
