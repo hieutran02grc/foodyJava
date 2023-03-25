@@ -3,25 +3,27 @@ package com.example.foodypj.src.View;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.foodypj.Model.ThucDonModel;
+import com.example.foodypj.Model.TienIchModel;
 import com.example.foodypj.R;
-import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -31,10 +33,14 @@ public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClic
     Button btnGioMoCua,btnGioDongCua;
     Spinner spinnerKhuVuc,spinnerThucDon;
     String gioMoCua,gioDongCua;
+    LinearLayout khungTienIch;
+
     ArrayAdapter<String> adapterKhuVuc,adapterThucDon;
 
-    //    List<ThucDonModel> thucDonModelList;
+
+    List<ThucDonModel> thucDonModelList;
     List<String> khuVucList,thucDonList;
+    List<String> selectedTienIchList;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,9 +49,12 @@ public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClic
         btnGioDongCua = (Button) findViewById(R.id.btnGioDongCua);
         spinnerKhuVuc = (Spinner) findViewById(R.id.spinnerKhuVuc);
         spinnerThucDon = (Spinner) findViewById(R.id.spinnerThucDon);
-//        thucDonModelList = new ArrayList<>();
+        khungTienIch = (LinearLayout) findViewById(R.id.khungTienIch);
+
+        thucDonModelList = new ArrayList<>();
         khuVucList = new ArrayList<>();
         thucDonList = new ArrayList<>();
+        selectedTienIchList = new ArrayList<String>();
 
         adapterKhuVuc = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,khuVucList);
         spinnerKhuVuc.setAdapter(adapterKhuVuc);
@@ -57,6 +66,7 @@ public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClic
 
         LayDanhSachKhuVuc();
         LayDanhSachThucDon();
+        LayDanhSachTienIch();
 
         btnGioMoCua.setOnClickListener(this);
         btnGioDongCua.setOnClickListener(this);
@@ -68,14 +78,14 @@ public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    //ThucDonModel thucDonModel = new ThucDonModel();
+                    ThucDonModel thucDonModel = new ThucDonModel();
                     String key = snapshot.getKey();
                     String value = snapshot.getValue(String.class);
 
-                    //thucDonModel.setTenthucdon(value);
-                    //thucDonModel.setMaThucDon(key);
+                    thucDonModel.setTenthucdon(value);
+                    thucDonModel.setMathucdon(key);
 
-                    //thucDonModelList.add(thucDonModel);
+                    thucDonModelList.add(thucDonModel);
                     thucDonList.add(value);
                 }
                 adapterThucDon.notifyDataSetChanged();
@@ -111,7 +121,26 @@ public class ThemQuanAnActivity extends AppCompatActivity implements View.OnClic
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    String maTienIch = snapshot.getKey();
+                    TienIchModel tienIchModel = snapshot.getValue(TienIchModel.class);
+                    tienIchModel.setMaTienIch(maTienIch);
 
+                    CheckBox checkBox = new CheckBox(ThemQuanAnActivity.this);
+                    checkBox.setText(tienIchModel.getTentienich());
+                    checkBox.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT));
+                    checkBox.setTag(maTienIch);
+                    checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                            String maTienIch = buttonView.getTag().toString();
+                            if(isChecked){
+                                selectedTienIchList.add(maTienIch);
+                            }else{
+                                selectedTienIchList.remove(maTienIch);
+                            }
+                        }
+                    });
+                    khungTienIch.addView(checkBox);
                 }
 
             }
