@@ -48,7 +48,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
     ImageView imgHinhQuanAn,imgPlayVideo;
     QuanAnModel quanAnModel;
     Toolbar toolbar;
-    RecyclerView recyclerViewBinhLuan;
+    RecyclerView recyclerViewBinhLuan,recyclerThucDon;
     AdapterBinhLuan adapterBinhLuan;
     LinearLayout khungTienIch;
     VideoView videotrailer;
@@ -78,6 +78,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         videotrailer = findViewById(R.id.videoTrailer);
         imgPlayVideo = findViewById(R.id.imgPlayTrailer);
         btnBinhLuan = findViewById(R.id.btnBinhLuan);
+        recyclerThucDon = findViewById(R.id.recyclerThucDon);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
@@ -187,7 +188,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         recyclerViewBinhLuan.setAdapter(adapterBinhLuan);
         adapterBinhLuan.notifyDataSetChanged();
 
-        thucDonController.getDanhSachThucDonQuanAnTheoMa(quanAnModel.getMaquanan());
+        thucDonController.getDanhSachThucDonQuanAnTheoMa(this,quanAnModel.getMaquanan(), recyclerThucDon);
     }
 
 

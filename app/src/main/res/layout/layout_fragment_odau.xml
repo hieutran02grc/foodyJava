@@ -70,7 +70,8 @@
             android:id="@+id/nestScrollOdau"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorAccent">
+            android:background="@color/colorAccent"
+            android:layout_marginBottom="65dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
