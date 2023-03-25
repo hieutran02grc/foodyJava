@@ -234,6 +234,8 @@
 
             </LinearLayout>
 
+            <include layout="@layout/layout_tinhnang_chitietquanan"/>
+
             <include layout="@layout/layout_binhluan_chitietquanan"/>
 
         </LinearLayout>

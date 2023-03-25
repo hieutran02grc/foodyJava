@@ -26,6 +26,8 @@ public class QuanAnModel implements Parcelable {
     List<String> hinhquanan ;
     List<BinhLuanModel> binhLuanModelList;
     List<Bitmap> bitmapList;
+    long giatoida,giatoithieu,luotthich;
+    List<ThucDonModel> thucDonModels;
 
     protected QuanAnModel(Parcel in) {
         giaohang = in.readByte() != 0;
@@ -54,6 +56,22 @@ public class QuanAnModel implements Parcelable {
         }
     };
 
+    public long getGiatoida() {
+        return giatoida;
+    }
+
+    public long getGiatoithieu() {
+        return giatoithieu;
+    }
+
+    public void setGiatoida(long giatoida) {
+        this.giatoida = giatoida;
+    }
+
+    public void setGiatoithieu(long giatoithieu) {
+        this.giatoithieu = giatoithieu;
+    }
+
     public List<Bitmap> getBitmapList() {
         return bitmapList;
     }
@@ -62,7 +80,6 @@ public class QuanAnModel implements Parcelable {
         this.bitmapList = bitmapList;
     }
 
-    long luotthich;
     DatabaseReference rootNode ;
 
     public QuanAnModel(){

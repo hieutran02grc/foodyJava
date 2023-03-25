@@ -24,6 +24,8 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -32,7 +34,7 @@ import java.util.Date;
 public class ChiTietQuanAnActivity extends AppCompatActivity {
     TextView txtTenQuanAn, txtDiaChi,txtThoiGianHoatDong,
             txtTrangThaiHoatDong, txtTongSoHinhAnh,
-            txtTongSoBinhLuan, txtTongSoLuuLai, txtTongSoCheckIn, txtTieuDeToolBar;
+            txtTongSoBinhLuan, txtTongSoLuuLai, txtTongSoCheckIn, txtTieuDeToolBar,txtGioiHanGia;
     ImageView imgHinhQuanAn,imgPlayVideo;
     QuanAnModel quanAnModel;
     Toolbar toolbar;
@@ -54,6 +56,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         txtTongSoBinhLuan = findViewById(R.id.tongSoBinhLuan);
         txtTongSoLuuLai = findViewById(R.id.tongSoLuuLai);
         txtTongSoCheckIn = findViewById(R.id.tongSoCheckIn);
+        txtGioiHanGia = findViewById(R.id.txtGioiHanGia);
         imgHinhQuanAn = findViewById(R.id.imgHinhQuanAn);
         txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
         toolbar = findViewById(R.id.toolbar);
@@ -109,6 +112,15 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         txtTongSoHinhAnh.setText(quanAnModel.getHinhquanan().size()+ "");
         txtTongSoBinhLuan.setText(quanAnModel.getBinhLuanModelList().size() + "");
         txtThoiGianHoatDong.setText(giomocua + " - " + giodongcua);
+
+        if(quanAnModel.getGiatoida() != 0 && quanAnModel.getGiatoithieu() != 0){
+            NumberFormat numberFormat = new DecimalFormat("###,###");
+            String giatoithieu = numberFormat.format(quanAnModel.getGiatoithieu() + " đ");
+            String giatoida = numberFormat.format(quanAnModel.getGiatoida() + "đ");
+            txtGioiHanGia.setText(giatoida + " - " + giatoida);
+        }else{
+            txtGioiHanGia.setVisibility(View.VISIBLE);
+        }
 
         StorageReference storageHinhQuanAn = FirebaseStorage.getInstance().getReference().child("hinhanh").child(quanAnModel.getHinhquanan().get(0));
         long ONE_MEGABYTE = 1024 * 1024;
