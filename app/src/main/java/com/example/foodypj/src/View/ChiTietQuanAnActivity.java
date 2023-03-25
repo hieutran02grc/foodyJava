@@ -40,7 +40,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_main_chitietquanan);
 
-         quanAnModel = getIntent().getParcelableExtra("quanan");
+        quanAnModel = getIntent().getParcelableExtra("quanan");
 
         txtTenQuanAn = findViewById(R.id.txtTenQuanAn);
         txtDiaChi = findViewById(R.id.txtDiaChiQuanAn);
@@ -110,6 +110,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
                 imgHinhQuanAn.setImageBitmap(bitmap);
             }
         });
+
 
         //Load Danh sach binh luan cua quan an
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
