@@ -6,21 +6,31 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.VideoView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodypj.Controller.ThucDonController;
 import com.example.foodypj.Model.QuanAnModel;
+import com.example.foodypj.Model.TienIchModel;
 import com.example.foodypj.R;
 import com.example.foodypj.src.Adapter.AdapterBinhLuan;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -40,7 +50,10 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
     Toolbar toolbar;
     RecyclerView recyclerViewBinhLuan;
     AdapterBinhLuan adapterBinhLuan;
+    LinearLayout khungTienIch;
     VideoView videotrailer;
+    ThucDonController thucDonController;
+    Button btnBinhLuan;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,15 +73,20 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         imgHinhQuanAn = findViewById(R.id.imgHinhQuanAn);
         txtTieuDeToolBar = findViewById(R.id.txtTieuDeToolBar);
         toolbar = findViewById(R.id.toolbar);
+        khungTienIch = findViewById(R.id.khungTienIch);
         recyclerViewBinhLuan = findViewById(R.id.recycleBinhLuanChiTietQuanAn);
         videotrailer = findViewById(R.id.videoTrailer);
         imgPlayVideo = findViewById(R.id.imgPlayTrailer);
+        btnBinhLuan = findViewById(R.id.btnBinhLuan);
 
         toolbar.setTitle("");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
+        thucDonController = new ThucDonController();
+
+        HienThiChiTietQuanAn();
 
     }
 
@@ -78,11 +96,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         return true;
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-
+    private void HienThiChiTietQuanAn(){
         Calendar calendar = Calendar.getInstance();
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm");
 
@@ -112,6 +127,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         txtTongSoHinhAnh.setText(quanAnModel.getHinhquanan().size()+ "");
         txtTongSoBinhLuan.setText(quanAnModel.getBinhLuanModelList().size() + "");
         txtThoiGianHoatDong.setText(giomocua + " - " + giodongcua);
+
+        DownLoadHinhTienIch(khungTienIch);
 
         if(quanAnModel.getGiatoida() != 0 && quanAnModel.getGiatoithieu() != 0){
             NumberFormat numberFormat = new DecimalFormat("###,###");
@@ -170,5 +187,53 @@ public class ChiTietQuanAnActivity extends AppCompatActivity {
         recyclerViewBinhLuan.setAdapter(adapterBinhLuan);
         adapterBinhLuan.notifyDataSetChanged();
 
+        thucDonController.getDanhSachThucDonQuanAnTheoMa(quanAnModel.getMaquanan());
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+
+    private void DownLoadHinhTienIch(final LinearLayout khungTienIch) {
+
+        for (String matienich : quanAnModel.getTienich()) {
+            DatabaseReference nodeTienIch = FirebaseDatabase.getInstance().getReference().child("quanlytienichs").child(matienich);
+            nodeTienIch.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    TienIchModel tienIchModel = snapshot.getValue(TienIchModel.class);
+                    if(tienIchModel.getHinhtienich() != null || tienIchModel.getTentienich() != null){
+                        StorageReference storageHinhQuanAn = FirebaseStorage.getInstance().getReference().child("hinhtienich");
+                        long ONE_MEGABYTE = 1024 * 1024;
+                        storageHinhQuanAn.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                            @Override
+                            public void onSuccess(byte[] bytes) {
+                                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes,0,bytes.length);
+                                ImageView imageTienIch = new ImageView(ChiTietQuanAnActivity.this);
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(50,50);
+                                layoutParams.setMargins(10,10,10,10);
+                                imageTienIch.setLayoutParams(layoutParams);
+                                imageTienIch.setScaleType(ImageView.ScaleType.FIT_XY);
+                                imageTienIch.setPadding(5,5,5,5);
+
+                                imageTienIch.setImageBitmap(bitmap);
+                                khungTienIch.addView(imageTienIch);
+                            }
+                        });
+                    }
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+
+        }
     }
 }
