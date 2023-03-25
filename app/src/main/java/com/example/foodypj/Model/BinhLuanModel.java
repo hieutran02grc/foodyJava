@@ -2,8 +2,15 @@ package com.example.foodypj.Model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+
+import com.example.foodypj.src.View.BinhLuanActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
@@ -124,4 +131,18 @@ public class BinhLuanModel implements Parcelable {
         dest.writeString(mabinhluan);
         dest.writeParcelable(thanhVienModel,flags);
     }
+
+    public void ThemBinhLuan(String maquanan,BinhLuanModel binhLuanModel){
+        DatabaseReference nodeBInhLuan = FirebaseDatabase.getInstance().getReference().child("binhluans");
+        nodeBInhLuan.child(maquanan).push().setValue(binhLuanModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if(task.isSuccessful()){
+
+                }
+            }
+
+        });
+    }
+
 }

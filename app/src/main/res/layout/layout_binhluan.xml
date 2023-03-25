@@ -51,6 +51,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/edTieuDe"
         android:layout_width="match_parent"
         android:layout_height="53dp"
         android:hint="Tieu de (khong bat buoc)"
@@ -62,6 +63,7 @@
         />
 
     <EditText
+        android:id="@+id/edNoiDungBinhLuan"
         android:layout_width="match_parent"
         android:layout_height="330dp"
         android:layout_gravity="top"

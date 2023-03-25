@@ -2,6 +2,7 @@ package com.example.foodypj.src.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -43,6 +44,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     private boolean isGuest = false;
     private GoogleSignInClient mClient;
     FirebaseAuth firebaseAuth;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         btnDangNhap.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         txtQuenMK.setOnClickListener(this);
-
+        sharedPreferences = getSharedPreferences("luudangnhap", MODE_PRIVATE);
 /*        createRequest();*/
         TaoClientDangNhapGoogle();
     }
@@ -221,6 +223,9 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if(user != null){
+            SharedPreferences.Editor edit = sharedPreferences.edit();
+            edit.putString("mauser",user.getUid());
+            edit.commit();
             Intent iTrangChu = new Intent(this,TrangChuActivity.class);
             startActivity(iTrangChu);
         }

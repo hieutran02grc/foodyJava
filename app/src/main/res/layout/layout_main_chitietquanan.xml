@@ -42,6 +42,7 @@
                     android:drawableTop="@drawable/gallery"
                     android:text="Check in"/>
                 <Button
+                    android:id="@+id/btnBinhLuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -62,13 +63,32 @@
                     android:drawableTop="@drawable/gallery"
                     android:text="Lưu lại"/>
             </LinearLayout>
-            <ImageView
-                android:id="@+id/imgHinhQuanAn"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp"
-                android:src="@drawable/download"
-                android:scaleType="fitXY"
-                />
+                android:layout_height="180dp">
+                <ImageView
+                    android:id="@+id/imgHinhQuanAn"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/download"
+                    android:scaleType="fitXY"
+                    />
+                <VideoView
+                    android:id="@+id/videoTrailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone"
+                    android:layout_gravity="center"
+                    android:scaleType="fitXY"/>
+                <ImageView
+                    android:id="@+id/imgPlayTrailer"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/play_circle"
+                    android:visibility="gone"
+                    />
+            </FrameLayout>
+
             <TextView
                 android:id="@+id/txtTenQuanAn"
                 android:layout_width="wrap_content"
@@ -107,7 +127,7 @@
                         android:id="@+id/tongSoHinhAnh"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="132"
+                        android:text="0"
                         android:textStyle="bold"
                         />
                     <TextView
@@ -135,6 +155,7 @@
                         android:text="Check-in" />
                 </LinearLayout>
                 <LinearLayout
+                    android:id="@+id/txtBinhLuanClick"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -144,7 +165,7 @@
                         android:id="@+id/tongSoBinhLuan"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="132"
+                        android:text="0"
                         android:textStyle="bold"
                         />
 
