@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include
@@ -9,7 +9,7 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <LinearLayout
@@ -42,6 +42,7 @@
                     android:drawableTop="@drawable/gallery"
                     android:text="Check in"/>
                 <Button
+                    android:id="@+id/btnBinhLuan"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -234,9 +235,14 @@
 
             </LinearLayout>
 
+            <include layout="@layout/layout_tinhnang_chitietquanan"/>
+
+            <include layout="@layout/layout_thucdon_chitiet"/>
+
             <include layout="@layout/layout_binhluan_chitietquanan"/>
 
         </LinearLayout>
+
 
 
 
