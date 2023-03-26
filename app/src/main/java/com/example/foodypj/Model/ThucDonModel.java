@@ -76,6 +76,7 @@ public class ThucDonModel {
                                MonAnModel monAnModel = valueMonAn.getValue(MonAnModel.class);
                                monAnModel.setMamon(valueMonAn.getKey());
                                monAnModels.add(monAnModel);
+                               Log.d("Check", monAnModel.getTenmon()+"");
                            }
                            thucDonModel.setMonAnModels(monAnModels);
                            thucDonModels.add(thucDonModel);

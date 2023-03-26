@@ -6,14 +6,18 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodypj.Model.DatMon;
 import com.example.foodypj.Model.MonAnModel;
 import com.example.foodypj.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn> {
@@ -22,9 +26,12 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     Context context;
     List<MonAnModel> monAnModelList;
 
+    public static List<DatMon> datMonList = new ArrayList<>();
+
     public AdapterMonAn(Context context, List<MonAnModel> monAnModelList) {
         this.context = context;
         this.monAnModelList = monAnModelList;
+
     }
 
 
@@ -32,13 +39,65 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     @Override
     public AdapterMonAn.HolderMonAn onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.custom_layout_monan,parent,false);
-        return new AdapterMonAn.HolderMonAn(view);
+        AdapterMonAn.HolderMonAn holder = new HolderMonAn(view);
+
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull AdapterMonAn.HolderMonAn holder, int position) {
         MonAnModel monAnModel = monAnModelList.get(position);
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
+
+        holder.txtSoLuong.setTag(0);
+        holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
+                dem++;
+                holder.txtSoLuong.setText(dem+"");
+                holder.txtSoLuong.setTag(dem);
+
+                DatMon datMonTag = (DatMon) holder.imgGiamSoLuong.getTag();
+                if (datMonTag != null){
+                    AdapterMonAn.datMonList.remove(datMonTag);
+                }
+
+                DatMon datMon = new DatMon();
+                datMon.setSoLuong(dem);
+                datMon.setTenMonAn(monAnModel.getTenmon());
+                datMon.setGiatien(monAnModel.getGiatien());
+
+
+                holder.imgGiamSoLuong.setTag(datMon);
+
+
+
+                AdapterMonAn.datMonList.add(datMon);
+                for (DatMon datMon1 : AdapterMonAn.datMonList){
+                    Log.d("kiemtra", ""+datMon1.getGiatien()+ " - " + datMon1.getSoLuong());
+                }
+            }
+        });
+        holder.imgGiamSoLuong.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int dem = Integer.parseInt(holder.txtSoLuong.getTag().toString());
+                if(dem != 0){
+                    dem--;
+                    if(dem == 0){
+                        DatMon datMon = (DatMon) v.getTag();
+                        AdapterMonAn.datMonList.remove(datMon);
+                    }
+                }
+                holder.txtSoLuong.setText(dem+"");
+                holder.txtSoLuong.setTag(dem);
+
+            }
+        });
+
+
+
     }
 
     @Override
@@ -46,11 +105,21 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
         return monAnModelList.size();
     }
 
+
+
     public class HolderMonAn extends RecyclerView.ViewHolder {
-        TextView txtTenMonAn;
+        TextView txtTenMonAn, txtSoLuong;
+        ImageView imgGiamSoLuong, imgTangSoLuong;
+        Button btnDatMon;
         public HolderMonAn(@NonNull View itemView) {
             super(itemView);
+            btnDatMon = itemView.findViewById(R.id.btnDatMon);
             txtTenMonAn = itemView.findViewById(R.id.txtTenMonAn);
+            txtSoLuong = itemView.findViewById(R.id.txtSoLuong);
+            imgGiamSoLuong = itemView.findViewById(R.id.imgGiamSoLuong);
+            imgTangSoLuong = itemView.findViewById(R.id.imgTangSoLuong);
+
+
         }
     }
 }

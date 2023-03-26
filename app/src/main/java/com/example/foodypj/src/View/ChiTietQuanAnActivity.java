@@ -1,5 +1,7 @@
 package com.example.foodypj.src.View;
 
+import static com.example.foodypj.src.Adapter.AdapterMonAn.datMonList;
+
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -22,10 +24,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodypj.Controller.ThucDonController;
+import com.example.foodypj.Model.DatMon;
+import com.example.foodypj.Model.MonAnModel;
 import com.example.foodypj.Model.QuanAnModel;
 import com.example.foodypj.Model.TienIchModel;
 import com.example.foodypj.R;
 import com.example.foodypj.src.Adapter.AdapterBinhLuan;
+import com.example.foodypj.src.Adapter.AdapterMonAn;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,10 +44,12 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
-public class ChiTietQuanAnActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChiTietQuanAnActivity extends AppCompatActivity implements View.OnClickListener{
     TextView txtTenQuanAn, txtDiaChi,txtThoiGianHoatDong,
             txtTrangThaiHoatDong, txtTongSoHinhAnh,
             txtTongSoBinhLuan, txtTongSoLuuLai, txtTongSoCheckIn, txtTieuDeToolBar,txtGioiHanGia;
@@ -54,8 +61,9 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements View.OnC
     LinearLayout khungTienIch;
     VideoView videotrailer;
     ThucDonController thucDonController;
-    Button btnBinhLuan;
+    Button btnBinhLuan,btnDatMon;
     LinearLayout lnBinhLuan;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +90,11 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements View.OnC
         btnBinhLuan = findViewById(R.id.btnBinhLuan);
         recyclerThucDon = findViewById(R.id.recyclerThucDon);
         lnBinhLuan = findViewById(R.id.txtBinhLuanClick);
+        btnDatMon = findViewById(R.id.btnDatMon);
 
+
+        btnDatMon.setOnClickListener(this);
+        btnBinhLuan.setOnClickListener(this);
         btnBinhLuan.setOnClickListener(this);
         lnBinhLuan.setOnClickListener(this);
         toolbar.setTitle("");
@@ -251,6 +263,13 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements View.OnC
                 Intent iBinhLuan1 = new Intent(this,BinhLuanActivity.class);
                 iBinhLuan1.putExtra("maquanan",quanAnModel.getMaquanan());
                 startActivity(iBinhLuan1);
+                break;
+            case R.id.btnDatMon:
+                Intent iGioHang = new Intent(this, GioHangActivity.class);
+                startActivity(iGioHang);
+/*                for(DatMon datMon:datMonList){
+                    Log.d("Mon An", datMon.getTenMonAn() );
+                }*/
                 break;
         }
 
