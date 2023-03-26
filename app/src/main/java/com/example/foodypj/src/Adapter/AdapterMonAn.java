@@ -48,7 +48,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
     public void onBindViewHolder(@NonNull AdapterMonAn.HolderMonAn holder, int position) {
         MonAnModel monAnModel = monAnModelList.get(position);
         holder.txtTenMonAn.setText(monAnModel.getTenmon());
-
+        holder.txtGiaTien.setText(monAnModel.getGiatien()+"");
         holder.txtSoLuong.setTag(0);
         holder.imgTangSoLuong.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,7 +108,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
 
 
     public class HolderMonAn extends RecyclerView.ViewHolder {
-        TextView txtTenMonAn, txtSoLuong;
+        TextView txtTenMonAn, txtSoLuong, txtGiaTien;
         ImageView imgGiamSoLuong, imgTangSoLuong;
         Button btnDatMon;
         public HolderMonAn(@NonNull View itemView) {
@@ -118,7 +118,7 @@ public class AdapterMonAn extends RecyclerView.Adapter<AdapterMonAn.HolderMonAn>
             txtSoLuong = itemView.findViewById(R.id.txtSoLuong);
             imgGiamSoLuong = itemView.findViewById(R.id.imgGiamSoLuong);
             imgTangSoLuong = itemView.findViewById(R.id.imgTangSoLuong);
-
+            txtGiaTien = itemView.findViewById(R.id.txtGiaTien);
 
         }
     }

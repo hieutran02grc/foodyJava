@@ -34,14 +34,6 @@
             android:background="@color/red_2027">
 
 
-            <com.google.android.material.navigation.NavigationView
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                app:headerLayout="@layout/header"
-                app:menu="@menu/main_menu"
-                android:id="@+id/nav_view"
-                android:layout_gravity="start"/>
-
 
             <RadioGroup
                 android:id="@+id/select_tab"
@@ -75,12 +67,16 @@
 
             </RadioGroup>
 
-            <ImageView
-                android:layout_width="24dp"
+            <TextView
+                android:id="@+id/logout"
+                android:text="Log out"
+                android:layout_width="80dp"
                 android:layout_height="24dp"
                 android:layout_gravity="right"
                 android:layout_marginRight="15dp"
-                app:srcCompat="@android:drawable/ic_menu_add" />
+                android:gravity="center"
+                android:textColor="@color/colorAccent"
+                />
         </androidx.appcompat.widget.Toolbar>
 
         <androidx.viewpager.widget.ViewPager

@@ -14,6 +14,7 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -32,39 +33,20 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
     ActionBarDrawerToggle actionBarDrawerToggle;
     FirebaseAuth firebaseAuth;
     Toolbar toolbar;
+    TextView logOut;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_trangchu);
 
-        /*drawerLayout = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.open,R.string.close);
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
-        actionBarDrawerToggle.syncState();
-        setSupportActionBar(drawerLayout);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()){
-                    case R.id.logout:
-                        firebaseAuth.signOut();
-                        Toast.makeText(TrangChuActivity.this, "Logout Successfully", Toast.LENGTH_SHORT).show();
-                }
-
-                return false;
-            }
-        });*/
-
-
-
+        logOut = findViewById(R.id.logout);
         viewPagerTrangChu = findViewById(R.id.viewpager_trangchu);
         rdOdau = findViewById(R.id.select_places);
         rdAngi = findViewById(R.id.select_food);
 
         rdOdau.setOnClickListener(this);
         rdAngi.setOnClickListener(this);
+        logOut.setOnClickListener(this);
 
         adapterViewPagerTrangChu = new AdapterViewPagerTrangChu(getSupportFragmentManager());
         viewPagerTrangChu.setAdapter(adapterViewPagerTrangChu);
@@ -104,7 +86,13 @@ public class TrangChuActivity extends AppCompatActivity implements ViewPager.OnP
 
     @Override
     public void onClick(View v) {
-
+        int id = v.getId();
+        switch(id){
+            case R.id.logout:
+                Intent iDangNhap = new Intent(this, DangNhapActivity.class);
+                startActivity(iDangNhap);
+                firebaseAuth.signOut();
+        }
     }
 
     @Override

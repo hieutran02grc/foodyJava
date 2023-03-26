@@ -12,8 +12,12 @@
         android:layout_height="wrap_content">
 
     </androidx.recyclerview.widget.RecyclerView>
+
     <Button
         android:id="@+id/btnDatMon"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_width="193dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:backgroundTint="@color/red_2027"
+        android:text="Đặt món"/>
 </LinearLayout>

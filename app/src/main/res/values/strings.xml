@@ -30,5 +30,8 @@
     <string name="damocua">Đã mở cửa</string>
     <string name="open">Open Navigation</string>
     <string name="close">Close Navigation</string>
+    <string name="datmon_name">Ten</string>
+    <string name="datmon_amount">So luong</string>
+    <string name="datmon_price">Gia tien</string>
 
 </resources>

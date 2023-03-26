@@ -26,7 +26,7 @@ public class DatMonAdapter  extends  RecyclerView.Adapter<DatMonAdapter.ViewHold
 
     List<DatMon> datMons ;
     Context context;
-    public DatMonAdapter(Context context, List<DatMon> datMons){
+    public DatMonAdapter(Context context,List<DatMon> datMons){
         this.datMons = datMons;
         this.context = context;
     }
@@ -47,21 +47,19 @@ public class DatMonAdapter  extends  RecyclerView.Adapter<DatMonAdapter.ViewHold
     @Override
     public DatMonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.custom_layout_giohang,parent,false);
-        DatMonAdapter.ViewHolder holder = new DatMonAdapter.ViewHolder(view);
-
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull DatMonAdapter.ViewHolder holder, int position) {
         DatMon data = datMons.get(position);
         holder.nameTextView.setText(data.getTenMonAn());
-        holder.priceTextView.setText((int) data.getGiatien());
-        holder.amountTextView.setText(data.getSoLuong());
+        holder.priceTextView.setText(data.getGiatien()+"");
+        holder.amountTextView.setText(data.getSoLuong()+"");
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return datMons.size();
     }
 }
