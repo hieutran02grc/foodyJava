@@ -15,6 +15,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ThucDonModel {
+    public ThucDonModel(String mathucdon, String tenthucdon) {
+        this.mathucdon = mathucdon;
+        this.tenthucdon = tenthucdon;
+    }
+
+    public ThucDonModel() {
+
+    }
+
     String mathucdon;
     String tenthucdon;
     List<MonAnModel> monAnModels;
