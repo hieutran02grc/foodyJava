@@ -2,9 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@color/red_2027"
-    android:layout_marginTop="10dp">
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:layout_marginTop="10dp"
+    >
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerThucDon"
         android:layout_width="match_parent"

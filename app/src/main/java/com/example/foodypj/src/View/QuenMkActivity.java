@@ -51,18 +51,29 @@ public class QuenMkActivity extends AppCompatActivity implements View.OnClickLis
         int id = v.getId();
         switch (id){
             case R.id.btnResetEmail:
-                if (email.trim().length() == 0 || checkMail(email)){
-                    Toast.makeText(this, "Hay nhap dung email", Toast.LENGTH_SHORT).show();
-                }else{
-                    firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if(task.isSuccessful()){
-                                Toast.makeText(QuenMkActivity.this, "Kiem tra email de reset", Toast.LENGTH_SHORT).show();
-                            }
+
+                firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(QuenMkActivity.this, "Kiem tra email de reset", Toast.LENGTH_SHORT).show();
                         }
-                    });
-                }
+                    }
+                });
+//                if (email.trim().length() == 0 || checkMail(email)){
+//
+//                    Toast.makeText(this, "Hay nhap dung email" , Toast.LENGTH_SHORT).show();
+//
+//                }else{
+//                    firebaseAuth.sendPasswordResetEmail(email).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<Void> task) {
+//                            if(task.isSuccessful()){
+//                                Toast.makeText(QuenMkActivity.this, "Kiem tra email de reset", Toast.LENGTH_SHORT).show();
+//                            }
+//                        }
+//                    });
+//                }
                 break;
             case R.id.txtDangNhap:
                 Intent iDangNhap = new Intent(this,DangNhapActivity.class);
