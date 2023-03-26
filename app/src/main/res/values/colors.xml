@@ -12,6 +12,8 @@
     <color name="colorBackgroundTrangChu">#CCC</color>
     <color name="colorPrimaryDark">#B2B2B2</color>
     <color name="tranparentWhite">#CCFFFFFF</color>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorWhite">#FFF</color>
 
 <!--    <color name="colorAccent">#FFFFF</color>-->
 </resources>
